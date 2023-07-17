@@ -32,7 +32,7 @@ namespace PINEditor
                 }
             }
             PINFile pinFile = new PINFile(filedir);
-            Console.Clear();
+            //Console.Clear();
             Console.WriteLine(pinFile.Header.AESKey);
             unk1Box.Text = Convert.ToString(pinFile.Header.Unk1);
             unk2Box.Text = Convert.ToString(pinFile.Header.Unk2);
