@@ -1,0 +1,12 @@
+C:\Users\Administrator\Desktop\Project\PINEditor\PINEditor\PINEditor\obj\Debug\PINEditor.csproj.AssemblyReference.cache
+C:\Users\Administrator\Desktop\Project\PINEditor\PINEditor\PINEditor\obj\Debug\PINEditor.PINEditor.resources
+C:\Users\Administrator\Desktop\Project\PINEditor\PINEditor\PINEditor\obj\Debug\PINEditor.Properties.Resources.resources
+C:\Users\Administrator\Desktop\Project\PINEditor\PINEditor\PINEditor\obj\Debug\PINEditor.csproj.GenerateResource.cache
+C:\Users\Administrator\Desktop\Project\PINEditor\PINEditor\PINEditor\obj\Debug\PINEditor.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\Project\PINEditor\PINEditor\PINEditor\bin\Debug\PINEditor.exe.config
+C:\Users\Administrator\Desktop\Project\PINEditor\PINEditor\PINEditor\bin\Debug\PINEditor.exe
+C:\Users\Administrator\Desktop\Project\PINEditor\PINEditor\PINEditor\bin\Debug\PINEditor.pdb
+C:\Users\Administrator\Desktop\Project\PINEditor\PINEditor\PINEditor\bin\Debug\KartRider.Common.dll
+C:\Users\Administrator\Desktop\Project\PINEditor\PINEditor\PINEditor\obj\Debug\PINEditor.csproj.CopyComplete
+C:\Users\Administrator\Desktop\Project\PINEditor\PINEditor\PINEditor\obj\Debug\PINEditor.exe
+C:\Users\Administrator\Desktop\Project\PINEditor\PINEditor\PINEditor\obj\Debug\PINEditor.pdb
