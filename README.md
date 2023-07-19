@@ -5,5 +5,10 @@ This Project is made to edit KartRider.pin file. I used Viual Studio 2019 and .N
 ## Functions
 
 - open KartRider.pin
-- edit KartRider.pin(but this is not stable
+- edit KartRider.pin(but this is not stable)
 - save KartRider.pin
+
+## Version Info
+
+- v0.1 : just edit primary data
+- v0.2 : added editing ipv4 and port number
