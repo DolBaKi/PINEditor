@@ -10,5 +10,7 @@ This Project is made to edit KartRider.pin file. I used Viual Studio 2019 and .N
 
 ## Version Info
 
-- v0.1 : just edit primary data
-- v0.2 : added editing ipv4 and port number
+- v0.1 : Just edit primary data
+- v0.2 : Added editing ipv4 and port number
+- v0.3 : Added Bml INFO
+- v0.4(Not Released) : edit Bml INFO
