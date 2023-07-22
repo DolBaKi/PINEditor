@@ -38,6 +38,10 @@ namespace PINEditor
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.portBox = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.ipv4Box = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.aesKeyBox = new System.Windows.Forms.TextBox();
             this.patchUrlBox = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -106,6 +110,7 @@ namespace PINEditor
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
@@ -113,6 +118,7 @@ namespace PINEditor
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
@@ -141,6 +147,10 @@ namespace PINEditor
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.portBox);
+            this.tabPage1.Controls.Add(this.label14);
+            this.tabPage1.Controls.Add(this.ipv4Box);
+            this.tabPage1.Controls.Add(this.label13);
             this.tabPage1.Controls.Add(this.aesKeyBox);
             this.tabPage1.Controls.Add(this.patchUrlBox);
             this.tabPage1.Controls.Add(this.label12);
@@ -167,11 +177,49 @@ namespace PINEditor
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(792, 385);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Primary Data";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // portBox
+            // 
+            this.portBox.Location = new System.Drawing.Point(324, 303);
+            this.portBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.portBox.Name = "portBox";
+            this.portBox.Size = new System.Drawing.Size(101, 21);
+            this.portBox.TabIndex = 23;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("굴림", 9F);
+            this.label14.Location = new System.Drawing.Point(265, 306);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(53, 12);
+            this.label14.TabIndex = 22;
+            this.label14.Text = "포트번호";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ipv4Box
+            // 
+            this.ipv4Box.Location = new System.Drawing.Point(108, 303);
+            this.ipv4Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ipv4Box.Name = "ipv4Box";
+            this.ipv4Box.Size = new System.Drawing.Size(154, 21);
+            this.ipv4Box.TabIndex = 21;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("굴림", 9F);
+            this.label13.Location = new System.Drawing.Point(36, 306);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(65, 12);
+            this.label13.TabIndex = 20;
+            this.label13.Text = "아이피주소";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // aesKeyBox
             // 
@@ -407,7 +455,7 @@ namespace PINEditor
             this.tabPage2.Controls.Add(this.treeView1);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(792, 385);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Bml Info";
@@ -450,6 +498,7 @@ namespace PINEditor
             this.treeView1.Name = "treeView1";
             this.treeView1.Size = new System.Drawing.Size(263, 378);
             this.treeView1.TabIndex = 0;
+            this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.nodeMouseClick);
             // 
             // PINEditor
             // 
@@ -459,6 +508,7 @@ namespace PINEditor
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            //this.Name = "PINEditor";
             this.Text = "PINEditor";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -512,6 +562,10 @@ namespace PINEditor
         private System.Windows.Forms.ColumnHeader Type;
         private System.Windows.Forms.ColumnHeader Value;
         private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.TextBox ipv4Box;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox portBox;
+        private System.Windows.Forms.Label label14;
     }
 }
 

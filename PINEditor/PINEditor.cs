@@ -22,7 +22,7 @@ namespace PINEditor
         {
             OpenFileDialog openFileDlg = new OpenFileDialog();
             openFileDlg.DefaultExt = "pin";
-            openFileDlg.Filter = "PIN(*.pin;)|*.pin";
+            openFileDlg.Filter = "PIN File ONLY(*.pin;)|*.pin";
             openFileDlg.ShowDialog();
             if (openFileDlg.FileName.Length > 0)
             {
@@ -32,7 +32,6 @@ namespace PINEditor
                 }
             }
             PINFile pinFile = new PINFile(filedir);
-            //Console.Clear();
             Console.WriteLine(pinFile.Header.AESKey);
             unk1Box.Text = Convert.ToString(pinFile.Header.Unk1);
             unk2Box.Text = Convert.ToString(pinFile.Header.Unk2);
@@ -46,6 +45,10 @@ namespace PINEditor
             aesKeyBox.Text = pinFile.Header.AESKey;
             urlBox.Text = pinFile.Header.URL;
             patchUrlBox.Text = pinFile.Header.PatchURL;
+            ipv4Box.Text = pinFile.AuthMethods[0].LoginServers[0].IP;
+            portBox.Text = pinFile.AuthMethods[0].LoginServers[0].Port.ToString();
+            BmlView(pinFile.BmlObjects);
+            BmlTreeWrite(pinFile.BmlObjects);
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -68,12 +71,133 @@ namespace PINEditor
 
             pinFile.Header.URL = urlBox.Text;
             pinFile.Header.PatchURL = patchUrlBox.Text;
+            foreach (PINFile.AuthMethod authMethod in pinFile.AuthMethods)
+            {
+                authMethod.LoginServers.Clear();
+                authMethod.LoginServers.Add(new PINFile.IPEndPoint
+                {
+                    IP = ipv4Box.Text,
+                    Port = Convert.ToUInt16(portBox.Text)
+                });
+            }
             File.WriteAllBytes(string.Concat(new string[]
                 {
                     filedir
             }), pinFile.GetEncryptedData());
         }
 
+        public void BmlView(List<BmlObject> bmlObjects)
+        {
+            for (int i = 0; i < bmlObjects.Count; i++)
+            {
+                Console.WriteLine("BML no : {0}", i + 1);
+                Console.WriteLine("Name : {0}", bmlObjects[i].Name);
+                Console.WriteLine("Value : {0}", bmlObjects[i].Value);
+                for (int j = 0; j < bmlObjects[i].SubObjects.Count; j++)
+                {
+                    Console.WriteLine("SubObjects no : {0}, {1}", j + 1, bmlObjects[i].SubObjects[j].Item1);
+                    Console.WriteLine("Name : {0}", bmlObjects[i].SubObjects[j].Item2.Name);
+                    Console.WriteLine("Value : {0}", bmlObjects[i].SubObjects[j].Item2.Value);
+                    foreach (KeyValuePair<string, string> item in bmlObjects[i].SubObjects[j].Item2.Values)
+                    {
+                        Console.WriteLine("[{0}:{1}]", item.Key, item.Value);
+                    }
+                }
+            }
+        }
+
+        public void BmlTreeWrite(List<BmlObject> bmlObjects)
+        {
+            treeView1.Nodes.Clear();
+            for (int i = 0; i < bmlObjects.Count; i++)
+            {
+                TreeNode a = new TreeNode(bmlObjects[i].Name.ToString());
+                treeView1.Nodes.Add(a);
+                for (int j = 0; j < bmlObjects[i].SubObjects.Count; j++)
+                {
+                    TreeNode b = new TreeNode(bmlObjects[i].SubObjects[j].Item1.ToString());
+                    a.Nodes.Add(b);
+                    foreach (KeyValuePair<string, string> item in bmlObjects[i].SubObjects[j].Item2.Values)
+                    {
+                        TreeNode c = new TreeNode(item.Key.ToString());
+                        b.Nodes.Add(c);
+                    }
+                }
+            }
+        }
+
+        void TreeToList()
+        {
+            listView1.Items.Clear();
+            foreach (TreeNode node in treeView1.Nodes)
+            {
+                TreeToList(node);
+            }
+        }
+        void TreeToList(TreeNode node)
+
+        {
+            listView1.Items.Add(
+                new ListViewItem(
+                     new string[]
+                     {
+                         node.Text,
+                         node.FullPath.Count(f => f == '\\').ToString()
+                     }));
+            foreach (TreeNode n in node.Nodes)
+            {
+                TreeToList(n);
+            }
+
+        }
+
         public string filedir;
+
+        private void nodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            TreeNode newSelected = e.Node;
+            listView1.Items.Clear();
+            Console.WriteLine(newSelected.Text);
+            PINFile pinFile = new PINFile(filedir);
+            List<BmlObject> bmlObjects = new List<BmlObject>(pinFile.BmlObjects);
+            for (int i = 0; i < bmlObjects.Count; i++)
+            {
+                if(bmlObjects[i].Name==newSelected.Text)
+                {
+                    for (int j = 0; j < bmlObjects[i].SubObjects.Count; j++)
+                    {
+                        ListViewItem.ListViewSubItem[] subItems;
+                        ListViewItem item = null;
+                        item = new ListViewItem(bmlObjects[i].SubObjects[j].Item2.Name, 0);
+                        subItems = new ListViewItem.ListViewSubItem[]
+                                  { new ListViewItem.ListViewSubItem(item, "Container"),
+                                new ListViewItem.ListViewSubItem(item, null)
+                                  };
+
+                        item.SubItems.AddRange(subItems);
+                        listView1.Items.Add(item);
+                    }
+                }
+                for (int j = 0; j < bmlObjects[i].SubObjects.Count; j++)
+                {
+                    if(bmlObjects[i].SubObjects[j].Item2.Name==newSelected.Text)
+                {
+                        foreach (KeyValuePair<string, string> item in bmlObjects[i].SubObjects[j].Item2.Values)
+                        {
+                            ListViewItem.ListViewSubItem[] subItemss;
+                            ListViewItem item1 = null;
+                            item1 = new ListViewItem(item.Key, 0);
+                            subItemss = new ListViewItem.ListViewSubItem[]
+                                      { new ListViewItem.ListViewSubItem(item1, item.Value.GetType().ToString()),
+                                new ListViewItem.ListViewSubItem(item1, item.Value)
+                                      };
+
+                            item1.SubItems.AddRange(subItemss);
+                            listView1.Items.Add(item1);
+                        }
+                    }
+                }
+            }
+        }
     }
 }
