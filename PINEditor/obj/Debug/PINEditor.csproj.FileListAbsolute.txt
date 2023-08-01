@@ -20,3 +20,4 @@ D:\Project\PINEditor\PINEditor\PINEditor\obj\Debug\PINEditor.csproj.CoreCompileI
 D:\Project\PINEditor\PINEditor\PINEditor\obj\Debug\PINEditor.csproj.CopyComplete
 D:\Project\PINEditor\PINEditor\PINEditor\obj\Debug\PINEditor.exe
 D:\Project\PINEditor\PINEditor\PINEditor\obj\Debug\PINEditor.pdb
+D:\Project\PINEditor\PINEditor\PINEditor\obj\Debug\PINEditor.csproj.SuggestedBindingRedirects.cache

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
 using KartRider.Common.Data;
+using System.Net.NetworkInformation;
 
 namespace PINEditor
 {
@@ -33,6 +34,7 @@ namespace PINEditor
             }
             PINFile pinFile = new PINFile(filedir);
             Console.WriteLine(pinFile.Header.AESKey);
+            bObjects= new List<BmlObject>(pinFile.BmlObjects);
             unk1Box.Text = Convert.ToString(pinFile.Header.Unk1);
             unk2Box.Text = Convert.ToString(pinFile.Header.Unk2);
             unk3Box.Text = Convert.ToString(pinFile.Header.Unk3);
@@ -55,7 +57,7 @@ namespace PINEditor
         {
             PINFile pinFile = new PINFile(filedir);
             pinFile.Header.Unk1 = Convert.ToByte(unk1Box.Text);
-            pinFile.Header.Unk2 = Convert.ToByte(unk2Box.Text);
+            pinFile.Header.Unk2 = Convert.ToUInt16(unk2Box.Text);
             pinFile.Header.Unk3 = Convert.ToByte(unk3Box.Text);
             pinFile.Header.Unk4 = Convert.ToByte(unk4Box.Text);
             pinFile.Header.Unk5 = Convert.ToByte(unk5Box.Text);
@@ -71,6 +73,8 @@ namespace PINEditor
 
             pinFile.Header.URL = urlBox.Text;
             pinFile.Header.PatchURL = patchUrlBox.Text;
+            pinFile.BmlObjects = bObjects;
+            BmlView(pinFile.BmlObjects);
             foreach (PINFile.AuthMethod authMethod in pinFile.AuthMethods)
             {
                 authMethod.LoginServers.Clear();
@@ -125,15 +129,6 @@ namespace PINEditor
                 }
             }
         }
-
-        void TreeToList()
-        {
-            listView1.Items.Clear();
-            foreach (TreeNode node in treeView1.Nodes)
-            {
-                TreeToList(node);
-            }
-        }
         void TreeToList(TreeNode node)
 
         {
@@ -153,22 +148,52 @@ namespace PINEditor
 
         public string filedir;
 
+        public string listdir;
+
+        public List<BmlObject> bObjects;
+
+        public string ss;
+
         private void nodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             TreeNode newSelected = e.Node;
-            listView1.Items.Clear();
-            Console.WriteLine(newSelected.Text);
-            PINFile pinFile = new PINFile(filedir);
-            List<BmlObject> bmlObjects = new List<BmlObject>(pinFile.BmlObjects);
-            for (int i = 0; i < bmlObjects.Count; i++)
+            if (ss == newSelected.Text) { return; }
+            for (int i = 0; i < bObjects.Count; i++)
             {
-                if(bmlObjects[i].Name==newSelected.Text)
+                for (int j = 0; j < bObjects[i].SubObjects.Count; j++)
                 {
-                    for (int j = 0; j < bmlObjects[i].SubObjects.Count; j++)
+                    if (bObjects[i].SubObjects[j].Item2.Name == ss)
+                    {
+                        Dictionary<string, string> pair = new Dictionary<string, string>();
+                        foreach (ListViewItem items in listView1.Items)
+                        {
+                            foreach (KeyValuePair<string, string> item in bObjects[i].SubObjects[j].Item2.Values)
+                            {
+                                if (item.Key == items.Text) pair[item.Key] = items.SubItems[2].Text;
+                            }
+                        }
+                        foreach (KeyValuePair<string, string> item in pair)
+                        {
+                            Console.WriteLine("[{0}:{1}]", item.Key, item.Value);
+                            bObjects[i].SubObjects[j].Item2.Values[item.Key]= item.Value;
+                        }
+                        if(ss=="secModule")bObjects[i].SubObjects[j].Item2.Values["type"] = "0";
+                    }
+                }
+            }
+            listView1.Items.Clear();
+            ss = null;
+            Console.WriteLine(newSelected.Text);
+            for (int i = 0; i < bObjects.Count; i++)
+            {
+                if(bObjects[i].Name==newSelected.Text)
+                {
+                    listdir = newSelected.Text;
+                    for (int j = 0; j < bObjects[i].SubObjects.Count; j++)
                     {
                         ListViewItem.ListViewSubItem[] subItems;
                         ListViewItem item = null;
-                        item = new ListViewItem(bmlObjects[i].SubObjects[j].Item2.Name, 0);
+                        item = new ListViewItem(bObjects[i].SubObjects[j].Item2.Name, 0);
                         subItems = new ListViewItem.ListViewSubItem[]
                                   { new ListViewItem.ListViewSubItem(item, "Container"),
                                 new ListViewItem.ListViewSubItem(item, null)
@@ -178,11 +203,12 @@ namespace PINEditor
                         listView1.Items.Add(item);
                     }
                 }
-                for (int j = 0; j < bmlObjects[i].SubObjects.Count; j++)
+                for (int j = 0; j < bObjects[i].SubObjects.Count; j++)
                 {
-                    if(bmlObjects[i].SubObjects[j].Item2.Name==newSelected.Text)
-                {
-                        foreach (KeyValuePair<string, string> item in bmlObjects[i].SubObjects[j].Item2.Values)
+                    if(bObjects[i].SubObjects[j].Item2.Name==newSelected.Text)
+                    {
+                        ss = newSelected.Text;
+                        foreach (KeyValuePair<string, string> item in bObjects[i].SubObjects[j].Item2.Values)
                         {
                             ListViewItem.ListViewSubItem[] subItemss;
                             ListViewItem item1 = null;
@@ -195,9 +221,20 @@ namespace PINEditor
                             item1.SubItems.AddRange(subItemss);
                             listView1.Items.Add(item1);
                         }
+                        Console.WriteLine(listView1.Items.Count);
                     }
                 }
             }
+        }
+
+        private void Apply_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedIndices.Count == 0)
+            {
+                MessageBox.Show("수정할 위치를 선택해 주세요");
+                return;
+            }
+            listView1.SelectedItems[0].SubItems[2].Text = textBox1.Text;
         }
     }
 }
