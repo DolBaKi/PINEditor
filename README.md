@@ -1,4 +1,4 @@
-# PIN_Editor
+# PINEditor
 
 This Project is made to edit KartRider.pin file. I used Viual Studio 2019 and .Net Framework 4.8.
 
