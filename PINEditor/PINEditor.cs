@@ -35,6 +35,7 @@ namespace PINEditor
             PINFile pinFile = new PINFile(filedir);
             Console.WriteLine(pinFile.Header.AESKey);
             bObjects= new List<BmlObject>(pinFile.BmlObjects);
+            Amethod = new List<PINFile.AuthMethod>(pinFile.AuthMethods);
             unk1Box.Text = Convert.ToString(pinFile.Header.Unk1);
             unk2Box.Text = Convert.ToString(pinFile.Header.Unk2);
             unk3Box.Text = Convert.ToString(pinFile.Header.Unk3);
@@ -47,10 +48,9 @@ namespace PINEditor
             aesKeyBox.Text = pinFile.Header.AESKey;
             urlBox.Text = pinFile.Header.URL;
             patchUrlBox.Text = pinFile.Header.PatchURL;
-            ipv4Box.Text = pinFile.AuthMethods[0].LoginServers[0].IP;
-            portBox.Text = pinFile.AuthMethods[0].LoginServers[0].Port.ToString();
-            BmlView(pinFile.BmlObjects);
             BmlTreeWrite(pinFile.BmlObjects);
+            IP_Port_Write(pinFile);
+            Console.WriteLine("-Authmethod-");
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -74,8 +74,8 @@ namespace PINEditor
             pinFile.Header.URL = urlBox.Text;
             pinFile.Header.PatchURL = patchUrlBox.Text;
             pinFile.BmlObjects = bObjects;
-            BmlView(pinFile.BmlObjects);
-            foreach (PINFile.AuthMethod authMethod in pinFile.AuthMethods)
+            pinFile.AuthMethods = Amethod;
+            /*foreach (PINFile.AuthMethod authMethod in pinFile.AuthMethods)
             {
                 authMethod.LoginServers.Clear();
                 authMethod.LoginServers.Add(new PINFile.IPEndPoint
@@ -83,7 +83,7 @@ namespace PINEditor
                     IP = ipv4Box.Text,
                     Port = Convert.ToUInt16(portBox.Text)
                 });
-            }
+            }*/
             File.WriteAllBytes(string.Concat(new string[]
                 {
                     filedir
@@ -152,35 +152,13 @@ namespace PINEditor
 
         public List<BmlObject> bObjects;
 
+        public List<PINFile.AuthMethod> Amethod;
+
         public string ss;
 
         private void nodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             TreeNode newSelected = e.Node;
-            if (ss == newSelected.Text) { return; }
-            for (int i = 0; i < bObjects.Count; i++)
-            {
-                for (int j = 0; j < bObjects[i].SubObjects.Count; j++)
-                {
-                    if (bObjects[i].SubObjects[j].Item2.Name == ss)
-                    {
-                        Dictionary<string, string> pair = new Dictionary<string, string>();
-                        foreach (ListViewItem items in listView1.Items)
-                        {
-                            foreach (KeyValuePair<string, string> item in bObjects[i].SubObjects[j].Item2.Values)
-                            {
-                                if (item.Key == items.Text) pair[item.Key] = items.SubItems[2].Text;
-                            }
-                        }
-                        foreach (KeyValuePair<string, string> item in pair)
-                        {
-                            Console.WriteLine("[{0}:{1}]", item.Key, item.Value);
-                            bObjects[i].SubObjects[j].Item2.Values[item.Key]= item.Value;
-                        }
-                        if(ss=="secModule")bObjects[i].SubObjects[j].Item2.Values["type"] = "0";
-                    }
-                }
-            }
             listView1.Items.Clear();
             ss = null;
             Console.WriteLine(newSelected.Text);
@@ -231,10 +209,80 @@ namespace PINEditor
         {
             if (listView1.SelectedIndices.Count == 0)
             {
-                MessageBox.Show("수정할 위치를 선택해 주세요");
+                MessageBox.Show("Please select a location to edit");
                 return;
             }
             listView1.SelectedItems[0].SubItems[2].Text = textBox1.Text;
+            for (int i = 0; i < bObjects.Count; i++)
+            {
+                for (int j = 0; j < bObjects[i].SubObjects.Count; j++)
+                {
+                    if (bObjects[i].SubObjects[j].Item2.Name == ss)
+                    {
+                        Dictionary<string, string> pair = new Dictionary<string, string>();
+                        foreach (ListViewItem items in listView1.Items)
+                        {
+                            foreach (KeyValuePair<string, string> item in bObjects[i].SubObjects[j].Item2.Values)
+                            {
+                                if (item.Key == items.Text) pair[item.Key] = items.SubItems[2].Text;
+                            }
+                        }
+                        foreach (KeyValuePair<string, string> item in pair)
+                        {
+                            Console.WriteLine("[{0}:{1}]", item.Key, item.Value);
+                            bObjects[i].SubObjects[j].Item2.Values[item.Key] = item.Value;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void IP_Port_Write(PINFile pinFile)
+        {
+            listView2.Items.Clear();
+            foreach (PINFile.AuthMethod authMethod in pinFile.AuthMethods)
+            {
+                Console.WriteLine("--------------------------------------");
+                Console.WriteLine("Name:{0}", authMethod.Name);
+                Console.WriteLine("IP:{0} Port{1}", authMethod.LoginServers[0].IP, authMethod.LoginServers[0].Port);
+            }
+            for(int i=0;i<pinFile.AuthMethods.Count;i++)
+            {
+                ListViewItem newItem = new ListViewItem(new String[]{pinFile.AuthMethods[i].Name,pinFile.AuthMethods[i].LoginServers[0].IP,pinFile.AuthMethods[i].LoginServers[0].Port.ToString()});
+                listView2.Items.Add(newItem);
+            }
+        }
+
+        private void delBtn_Click(object sender, EventArgs e)
+        {
+            if (listView2.SelectedIndices.Count == 0)
+            {
+                MessageBox.Show("Please select a location to delete");
+                return;
+            }
+            var idxColl = listView2.SelectedIndices;
+            for(int i=idxColl.Count-1;i>=0;i--)
+            {
+                int idx = idxColl[i];
+                listView2.Items[idx].Remove();
+                Amethod.RemoveAt(idx);
+            }
+        }
+
+        private void addBtn_Click(object sender, EventArgs e)
+        {
+            int cnt = listView2.Items.Count;
+            ListViewItem newItem = new ListViewItem(new String[] {nameBox.Text, ipBox.Text, portBox.Text });
+            listView2.Items.Add(newItem);
+            PINFile.AuthMethod authMethod = new PINFile.AuthMethod();
+            authMethod.Name = nameBox.Text;
+            authMethod.LoginServers = new List<PINFile.IPEndPoint>();
+            authMethod.LoginServers.Add(new PINFile.IPEndPoint
+            {
+                IP = ipBox.Text,
+                Port = Convert.ToUInt16(portBox.Text)
+            });
+            Amethod.Add(authMethod);
         }
     }
 }

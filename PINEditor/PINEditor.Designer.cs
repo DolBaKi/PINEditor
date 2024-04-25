@@ -38,10 +38,6 @@ namespace PINEditor
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.portBox = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.ipv4Box = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.aesKeyBox = new System.Windows.Forms.TextBox();
             this.patchUrlBox = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -67,28 +63,43 @@ namespace PINEditor
             this.unk1Box = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.Apply = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
             this.Name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Type = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Value = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.treeView1 = new System.Windows.Forms.TreeView();
-            this.label15 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.Apply = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.addBtn = new System.Windows.Forms.Button();
+            this.portBox = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.ipBox = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.nameBox = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.delBtn = new System.Windows.Forms.Button();
+            this.listView2 = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.IP = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Port = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
+            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1143, 33);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -101,20 +112,20 @@ namespace PINEditor
             this.saveAsToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(55, 29);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(225, 34);
             this.newToolStripMenuItem.Text = "New";
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(225, 34);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
@@ -122,38 +133,36 @@ namespace PINEditor
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(225, 34);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(225, 34);
             this.saveAsToolStripMenuItem.Text = "Save As";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(225, 34);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(0, 27);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Location = new System.Drawing.Point(0, 40);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(800, 411);
+            this.tabControl1.Size = new System.Drawing.Size(1143, 616);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.portBox);
-            this.tabPage1.Controls.Add(this.label14);
-            this.tabPage1.Controls.Add(this.ipv4Box);
-            this.tabPage1.Controls.Add(this.label13);
             this.tabPage1.Controls.Add(this.aesKeyBox);
             this.tabPage1.Controls.Add(this.patchUrlBox);
             this.tabPage1.Controls.Add(this.label12);
@@ -178,75 +187,39 @@ namespace PINEditor
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.unk1Box);
             this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(4, 28);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(792, 385);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage1.Size = new System.Drawing.Size(1135, 584);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Primary Data";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // portBox
-            // 
-            this.portBox.Location = new System.Drawing.Point(324, 303);
-            this.portBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.portBox.Name = "portBox";
-            this.portBox.Size = new System.Drawing.Size(101, 21);
-            this.portBox.TabIndex = 23;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("굴림", 9F);
-            this.label14.Location = new System.Drawing.Point(265, 306);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(53, 12);
-            this.label14.TabIndex = 22;
-            this.label14.Text = "포트번호";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ipv4Box
-            // 
-            this.ipv4Box.Location = new System.Drawing.Point(108, 303);
-            this.ipv4Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ipv4Box.Name = "ipv4Box";
-            this.ipv4Box.Size = new System.Drawing.Size(154, 21);
-            this.ipv4Box.TabIndex = 21;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("굴림", 9F);
-            this.label13.Location = new System.Drawing.Point(36, 306);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(65, 12);
-            this.label13.TabIndex = 20;
-            this.label13.Text = "아이피주소";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // aesKeyBox
             // 
-            this.aesKeyBox.Location = new System.Drawing.Point(108, 229);
-            this.aesKeyBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.aesKeyBox.Location = new System.Drawing.Point(154, 344);
+            this.aesKeyBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.aesKeyBox.Name = "aesKeyBox";
-            this.aesKeyBox.Size = new System.Drawing.Size(317, 21);
+            this.aesKeyBox.Size = new System.Drawing.Size(451, 28);
             this.aesKeyBox.TabIndex = 19;
             // 
             // patchUrlBox
             // 
-            this.patchUrlBox.Location = new System.Drawing.Point(108, 278);
-            this.patchUrlBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.patchUrlBox.Location = new System.Drawing.Point(154, 417);
+            this.patchUrlBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.patchUrlBox.Name = "patchUrlBox";
-            this.patchUrlBox.Size = new System.Drawing.Size(317, 21);
+            this.patchUrlBox.Size = new System.Drawing.Size(451, 28);
             this.patchUrlBox.TabIndex = 19;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("굴림", 9F);
-            this.label12.Location = new System.Drawing.Point(52, 231);
+            this.label12.Location = new System.Drawing.Point(74, 346);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(51, 12);
+            this.label12.Size = new System.Drawing.Size(73, 18);
             this.label12.TabIndex = 18;
             this.label12.Text = "AESKey";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -255,199 +228,210 @@ namespace PINEditor
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("굴림", 9F);
-            this.label9.Location = new System.Drawing.Point(39, 281);
+            this.label9.Location = new System.Drawing.Point(56, 422);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(60, 12);
+            this.label9.Size = new System.Drawing.Size(85, 18);
             this.label9.TabIndex = 18;
             this.label9.Text = "PatchURL";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // loginTypeBox
             // 
-            this.loginTypeBox.Location = new System.Drawing.Point(108, 204);
-            this.loginTypeBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.loginTypeBox.Location = new System.Drawing.Point(154, 306);
+            this.loginTypeBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.loginTypeBox.Name = "loginTypeBox";
-            this.loginTypeBox.Size = new System.Drawing.Size(317, 21);
+            this.loginTypeBox.Size = new System.Drawing.Size(451, 28);
             this.loginTypeBox.TabIndex = 17;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("굴림", 9F);
-            this.label11.Location = new System.Drawing.Point(38, 206);
+            this.label11.Location = new System.Drawing.Point(54, 309);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(65, 12);
+            this.label11.Size = new System.Drawing.Size(91, 18);
             this.label11.TabIndex = 16;
             this.label11.Text = "LoginType";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // urlBox
             // 
-            this.urlBox.Location = new System.Drawing.Point(108, 254);
-            this.urlBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.urlBox.Location = new System.Drawing.Point(154, 381);
+            this.urlBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.urlBox.Name = "urlBox";
-            this.urlBox.Size = new System.Drawing.Size(317, 21);
+            this.urlBox.Size = new System.Drawing.Size(451, 28);
             this.urlBox.TabIndex = 17;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("굴림", 9F);
-            this.label10.Location = new System.Drawing.Point(73, 256);
+            this.label10.Location = new System.Drawing.Point(104, 384);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(28, 12);
+            this.label10.Size = new System.Drawing.Size(39, 18);
             this.label10.TabIndex = 16;
             this.label10.Text = "URL";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // unk5Box
             // 
-            this.unk5Box.Location = new System.Drawing.Point(108, 179);
-            this.unk5Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.unk5Box.Location = new System.Drawing.Point(154, 268);
+            this.unk5Box.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.unk5Box.Name = "unk5Box";
-            this.unk5Box.Size = new System.Drawing.Size(317, 21);
+            this.unk5Box.Size = new System.Drawing.Size(451, 28);
             this.unk5Box.TabIndex = 15;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("굴림", 9F);
-            this.label5.Location = new System.Drawing.Point(68, 182);
+            this.label5.Location = new System.Drawing.Point(97, 273);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(32, 12);
+            this.label5.Size = new System.Drawing.Size(48, 18);
             this.label5.TabIndex = 14;
             this.label5.Text = "Unk5";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // unk4Box
             // 
-            this.unk4Box.Location = new System.Drawing.Point(108, 154);
-            this.unk4Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.unk4Box.Location = new System.Drawing.Point(154, 231);
+            this.unk4Box.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.unk4Box.Name = "unk4Box";
-            this.unk4Box.Size = new System.Drawing.Size(317, 21);
+            this.unk4Box.Size = new System.Drawing.Size(451, 28);
             this.unk4Box.TabIndex = 13;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("굴림", 9F);
-            this.label6.Location = new System.Drawing.Point(68, 157);
+            this.label6.Location = new System.Drawing.Point(97, 236);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(32, 12);
+            this.label6.Size = new System.Drawing.Size(48, 18);
             this.label6.TabIndex = 12;
             this.label6.Text = "Unk4";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // minorVersionBox
             // 
-            this.minorVersionBox.Location = new System.Drawing.Point(108, 130);
-            this.minorVersionBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.minorVersionBox.Location = new System.Drawing.Point(154, 195);
+            this.minorVersionBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.minorVersionBox.Name = "minorVersionBox";
-            this.minorVersionBox.Size = new System.Drawing.Size(317, 21);
+            this.minorVersionBox.Size = new System.Drawing.Size(451, 28);
             this.minorVersionBox.TabIndex = 11;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("굴림", 9F);
-            this.label7.Location = new System.Drawing.Point(24, 132);
+            this.label7.Location = new System.Drawing.Point(34, 198);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(80, 12);
+            this.label7.Size = new System.Drawing.Size(114, 18);
             this.label7.TabIndex = 10;
             this.label7.Text = "MinorVersion";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // unk3Box
             // 
-            this.unk3Box.Location = new System.Drawing.Point(108, 105);
-            this.unk3Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.unk3Box.Location = new System.Drawing.Point(154, 158);
+            this.unk3Box.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.unk3Box.Name = "unk3Box";
-            this.unk3Box.Size = new System.Drawing.Size(317, 21);
+            this.unk3Box.Size = new System.Drawing.Size(451, 28);
             this.unk3Box.TabIndex = 9;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("굴림", 9F);
-            this.label8.Location = new System.Drawing.Point(68, 107);
+            this.label8.Location = new System.Drawing.Point(97, 160);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(32, 12);
+            this.label8.Size = new System.Drawing.Size(48, 18);
             this.label8.TabIndex = 8;
             this.label8.Text = "Unk3";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // localeTypeBox
             // 
-            this.localeTypeBox.Location = new System.Drawing.Point(108, 80);
-            this.localeTypeBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.localeTypeBox.Location = new System.Drawing.Point(154, 120);
+            this.localeTypeBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.localeTypeBox.Name = "localeTypeBox";
-            this.localeTypeBox.Size = new System.Drawing.Size(317, 21);
+            this.localeTypeBox.Size = new System.Drawing.Size(451, 28);
             this.localeTypeBox.TabIndex = 7;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("굴림", 9F);
-            this.label4.Location = new System.Drawing.Point(31, 82);
+            this.label4.Location = new System.Drawing.Point(44, 123);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 12);
+            this.label4.Size = new System.Drawing.Size(101, 18);
             this.label4.TabIndex = 6;
             this.label4.Text = "LocaleType";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // unk2Box
             // 
-            this.unk2Box.Location = new System.Drawing.Point(108, 55);
-            this.unk2Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.unk2Box.Location = new System.Drawing.Point(154, 82);
+            this.unk2Box.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.unk2Box.Name = "unk2Box";
-            this.unk2Box.Size = new System.Drawing.Size(317, 21);
+            this.unk2Box.Size = new System.Drawing.Size(451, 28);
             this.unk2Box.TabIndex = 5;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("굴림", 9F);
-            this.label3.Location = new System.Drawing.Point(68, 58);
+            this.label3.Location = new System.Drawing.Point(97, 87);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(32, 12);
+            this.label3.Size = new System.Drawing.Size(48, 18);
             this.label3.TabIndex = 4;
             this.label3.Text = "Unk2";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // localeIDBox
             // 
-            this.localeIDBox.Location = new System.Drawing.Point(108, 30);
-            this.localeIDBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.localeIDBox.Location = new System.Drawing.Point(154, 45);
+            this.localeIDBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.localeIDBox.Name = "localeIDBox";
-            this.localeIDBox.Size = new System.Drawing.Size(317, 21);
+            this.localeIDBox.Size = new System.Drawing.Size(451, 28);
             this.localeIDBox.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("굴림", 9F);
-            this.label2.Location = new System.Drawing.Point(47, 33);
+            this.label2.Location = new System.Drawing.Point(67, 50);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 12);
+            this.label2.Size = new System.Drawing.Size(75, 18);
             this.label2.TabIndex = 2;
             this.label2.Text = "LocaleID";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // unk1Box
             // 
-            this.unk1Box.Location = new System.Drawing.Point(108, 6);
-            this.unk1Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.unk1Box.Location = new System.Drawing.Point(154, 9);
+            this.unk1Box.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.unk1Box.Name = "unk1Box";
-            this.unk1Box.Size = new System.Drawing.Size(317, 21);
+            this.unk1Box.Size = new System.Drawing.Size(451, 28);
             this.unk1Box.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("굴림", 9F);
-            this.label1.Location = new System.Drawing.Point(68, 8);
+            this.label1.Location = new System.Drawing.Point(97, 12);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 12);
+            this.label1.Size = new System.Drawing.Size(48, 18);
             this.label1.TabIndex = 0;
             this.label1.Text = "Unk1";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -459,13 +443,44 @@ namespace PINEditor
             this.tabPage2.Controls.Add(this.label15);
             this.tabPage2.Controls.Add(this.listView1);
             this.tabPage2.Controls.Add(this.treeView1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(4, 28);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(792, 385);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage2.Size = new System.Drawing.Size(1135, 584);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Bml Info";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // Apply
+            // 
+            this.Apply.Location = new System.Drawing.Point(1013, 489);
+            this.Apply.Margin = new System.Windows.Forms.Padding(4);
+            this.Apply.Name = "Apply";
+            this.Apply.Size = new System.Drawing.Size(107, 34);
+            this.Apply.TabIndex = 4;
+            this.Apply.Text = "Apply";
+            this.Apply.UseVisualStyleBackColor = true;
+            this.Apply.Click += new System.EventHandler(this.Apply_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(409, 492);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(594, 28);
+            this.textBox1.TabIndex = 3;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label15.Location = new System.Drawing.Point(319, 492);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(95, 32);
+            this.label15.TabIndex = 2;
+            this.label15.Text = "Value";
             // 
             // listView1
             // 
@@ -474,10 +489,10 @@ namespace PINEditor
             this.Type,
             this.Value});
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(223, 6);
-            this.listView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.listView1.Location = new System.Drawing.Point(319, 9);
+            this.listView1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(561, 289);
+            this.listView1.Size = new System.Drawing.Size(800, 432);
             this.listView1.TabIndex = 1;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -499,48 +514,140 @@ namespace PINEditor
             // 
             // treeView1
             // 
-            this.treeView1.Location = new System.Drawing.Point(5, 6);
-            this.treeView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.treeView1.Location = new System.Drawing.Point(7, 9);
+            this.treeView1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(212, 378);
+            this.treeView1.Size = new System.Drawing.Size(301, 432);
             this.treeView1.TabIndex = 0;
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.nodeMouseClick);
             // 
-            // label15
+            // tabPage3
             // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label15.Location = new System.Drawing.Point(223, 328);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(57, 21);
-            this.label15.TabIndex = 2;
-            this.label15.Text = "Value";
+            this.tabPage3.Controls.Add(this.addBtn);
+            this.tabPage3.Controls.Add(this.portBox);
+            this.tabPage3.Controls.Add(this.label16);
+            this.tabPage3.Controls.Add(this.ipBox);
+            this.tabPage3.Controls.Add(this.label14);
+            this.tabPage3.Controls.Add(this.nameBox);
+            this.tabPage3.Controls.Add(this.label13);
+            this.tabPage3.Controls.Add(this.delBtn);
+            this.tabPage3.Controls.Add(this.listView2);
+            this.tabPage3.Location = new System.Drawing.Point(4, 28);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage3.Size = new System.Drawing.Size(1135, 584);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "IP Data";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // addBtn
             // 
-            this.textBox1.Location = new System.Drawing.Point(286, 328);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(417, 21);
-            this.textBox1.TabIndex = 3;
+            this.addBtn.Location = new System.Drawing.Point(903, 123);
+            this.addBtn.Name = "addBtn";
+            this.addBtn.Size = new System.Drawing.Size(83, 35);
+            this.addBtn.TabIndex = 8;
+            this.addBtn.Text = "Add";
+            this.addBtn.UseVisualStyleBackColor = true;
+            this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
             // 
-            // Apply
+            // portBox
             // 
-            this.Apply.Location = new System.Drawing.Point(709, 326);
-            this.Apply.Name = "Apply";
-            this.Apply.Size = new System.Drawing.Size(75, 23);
-            this.Apply.TabIndex = 4;
-            this.Apply.Text = "Apply";
-            this.Apply.UseVisualStyleBackColor = true;
-            this.Apply.Click += new System.EventHandler(this.Apply_Click);
+            this.portBox.Location = new System.Drawing.Point(797, 125);
+            this.portBox.Name = "portBox";
+            this.portBox.Size = new System.Drawing.Size(100, 28);
+            this.portBox.TabIndex = 7;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(794, 104);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(41, 18);
+            this.label16.TabIndex = 6;
+            this.label16.Text = "Port";
+            // 
+            // ipBox
+            // 
+            this.ipBox.Location = new System.Drawing.Point(613, 125);
+            this.ipBox.Name = "ipBox";
+            this.ipBox.Size = new System.Drawing.Size(169, 28);
+            this.ipBox.TabIndex = 5;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(610, 104);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(22, 18);
+            this.label14.TabIndex = 4;
+            this.label14.Text = "IP";
+            // 
+            // nameBox
+            // 
+            this.nameBox.Location = new System.Drawing.Point(497, 125);
+            this.nameBox.Name = "nameBox";
+            this.nameBox.Size = new System.Drawing.Size(100, 28);
+            this.nameBox.TabIndex = 3;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(494, 104);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(55, 18);
+            this.label13.TabIndex = 2;
+            this.label13.Text = "Name";
+            // 
+            // delBtn
+            // 
+            this.delBtn.Location = new System.Drawing.Point(497, 29);
+            this.delBtn.Name = "delBtn";
+            this.delBtn.Size = new System.Drawing.Size(86, 34);
+            this.delBtn.TabIndex = 1;
+            this.delBtn.Text = "Delete";
+            this.delBtn.UseVisualStyleBackColor = true;
+            this.delBtn.Click += new System.EventHandler(this.delBtn_Click);
+            // 
+            // listView2
+            // 
+            this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.IP,
+            this.Port});
+            this.listView2.HideSelection = false;
+            this.listView2.Location = new System.Drawing.Point(9, 10);
+            this.listView2.Margin = new System.Windows.Forms.Padding(4);
+            this.listView2.Name = "listView2";
+            this.listView2.Size = new System.Drawing.Size(465, 566);
+            this.listView2.TabIndex = 0;
+            this.listView2.UseCompatibleStateImageBehavior = false;
+            this.listView2.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "name";
+            this.columnHeader1.Width = 162;
+            // 
+            // IP
+            // 
+            this.IP.Text = "IP";
+            this.IP.Width = 187;
+            // 
+            // Port
+            // 
+            this.Port.Text = "Port";
+            this.Port.Width = 112;
             // 
             // PINEditor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1143, 675);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Text = "PINEditor";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -549,6 +656,8 @@ namespace PINEditor
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -595,13 +704,22 @@ namespace PINEditor
         private System.Windows.Forms.ColumnHeader Type;
         private System.Windows.Forms.ColumnHeader Value;
         private System.Windows.Forms.TreeView treeView1;
-        private System.Windows.Forms.TextBox ipv4Box;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox portBox;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button Apply;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.ListView listView2;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader IP;
+        private System.Windows.Forms.ColumnHeader Port;
+        private System.Windows.Forms.Button addBtn;
+        private System.Windows.Forms.TextBox portBox;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox ipBox;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox nameBox;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button delBtn;
     }
 }
 
