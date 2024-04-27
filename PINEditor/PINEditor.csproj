@@ -9,6 +9,7 @@
     <RootNamespace>PINEditor</RootNamespace>
     <AssemblyName>PINEditor</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <langVersion>8.0</langVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -22,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,9 +38,6 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="KartRider.Common">
-      <HintPath>..\..\..\..\KartRider.kr_4395\KartRider.Common.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -52,6 +51,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="KartRider.Common\KartNew.Utilities\TimeUtil.cs" />
+    <Compile Include="KartRider.Common\KartRider\Common.Data\BmlObject.cs" />
+    <Compile Include="KartRider.Common\KartRider\Common.Data\PINFile.cs" />
+    <Compile Include="KartRider.Common\KartRider\Common.Network\Session.cs" />
+    <Compile Include="KartRider.Common\KartRider\Common.Network\SocketInfo.cs" />
+    <Compile Include="KartRider.Common\KartRider\Common.Security\KRCrypto.cs" />
+    <Compile Include="KartRider.Common\KartRider\Common.Security\KREncodedBlock.cs" />
+    <Compile Include="KartRider.Common\KartRider\Common.Security\KRPacketCrypto.cs" />
+    <Compile Include="KartRider.Common\KartRider\Common.Utilities\Adler32Helper.cs" />
+    <Compile Include="KartRider.Common\KartRider\Common.Utilities\ByteArraySegment.cs" />
+    <Compile Include="KartRider.Common\KartRider\Common.Utilities\HexEncoding.cs" />
+    <Compile Include="KartRider.Common\KartRider\Common.Utilities\LockFreeQueue_T_.cs" />
+    <Compile Include="KartRider.Common\KartRider\Common.Utilities\NativeMethods.cs" />
+    <Compile Include="KartRider.Common\KartRider\IO\CryptoConstants.cs" />
+    <Compile Include="KartRider.Common\KartRider\IO\InPacket.cs" />
+    <Compile Include="KartRider.Common\KartRider\IO\OutPacket.cs" />
+    <Compile Include="KartRider.Common\KartRider\IO\PacketBase.cs" />
+    <Compile Include="KartRider.Common\KartRider\IO\PacketReadException.cs" />
+    <Compile Include="KartRider.Common\KartRider\Net\RTTIValues.cs" />
     <Compile Include="PINEditor.cs">
       <SubType>Form</SubType>
     </Compile>

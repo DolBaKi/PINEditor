@@ -63,6 +63,20 @@ namespace PINEditor
             this.unk1Box = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.subnodeaddBtn = new System.Windows.Forms.Button();
+            this.label20 = new System.Windows.Forms.Label();
+            this.subnodeBox = new System.Windows.Forms.TextBox();
+            this.subnodedelBtn = new System.Windows.Forms.Button();
+            this.bignodeaddBtn = new System.Windows.Forms.Button();
+            this.label18 = new System.Windows.Forms.Label();
+            this.bignodeBox = new System.Windows.Forms.TextBox();
+            this.bignodedelBtn = new System.Windows.Forms.Button();
+            this.bmldelBtn = new System.Windows.Forms.Button();
+            this.bmladdBtn = new System.Windows.Forms.Button();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.bmlvalueBox = new System.Windows.Forms.TextBox();
+            this.bmlnameBox = new System.Windows.Forms.TextBox();
             this.Apply = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -438,6 +452,20 @@ namespace PINEditor
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.subnodeaddBtn);
+            this.tabPage2.Controls.Add(this.label20);
+            this.tabPage2.Controls.Add(this.subnodeBox);
+            this.tabPage2.Controls.Add(this.subnodedelBtn);
+            this.tabPage2.Controls.Add(this.bignodeaddBtn);
+            this.tabPage2.Controls.Add(this.label18);
+            this.tabPage2.Controls.Add(this.bignodeBox);
+            this.tabPage2.Controls.Add(this.bignodedelBtn);
+            this.tabPage2.Controls.Add(this.bmldelBtn);
+            this.tabPage2.Controls.Add(this.bmladdBtn);
+            this.tabPage2.Controls.Add(this.label19);
+            this.tabPage2.Controls.Add(this.label17);
+            this.tabPage2.Controls.Add(this.bmlvalueBox);
+            this.tabPage2.Controls.Add(this.bmlnameBox);
             this.tabPage2.Controls.Add(this.Apply);
             this.tabPage2.Controls.Add(this.textBox1);
             this.tabPage2.Controls.Add(this.label15);
@@ -452,9 +480,136 @@ namespace PINEditor
             this.tabPage2.Text = "Bml Info";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // subnodeaddBtn
+            // 
+            this.subnodeaddBtn.Location = new System.Drawing.Point(226, 529);
+            this.subnodeaddBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.subnodeaddBtn.Name = "subnodeaddBtn";
+            this.subnodeaddBtn.Size = new System.Drawing.Size(82, 34);
+            this.subnodeaddBtn.TabIndex = 20;
+            this.subnodeaddBtn.Text = "Add";
+            this.subnodeaddBtn.UseVisualStyleBackColor = true;
+            this.subnodeaddBtn.Click += new System.EventHandler(this.subnodeaddBtn_Click);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(109, 506);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(82, 18);
+            this.label20.TabIndex = 19;
+            this.label20.Text = "SubNode";
+            // 
+            // subnodeBox
+            // 
+            this.subnodeBox.Location = new System.Drawing.Point(109, 530);
+            this.subnodeBox.Name = "subnodeBox";
+            this.subnodeBox.Size = new System.Drawing.Size(110, 28);
+            this.subnodeBox.TabIndex = 18;
+            // 
+            // subnodedelBtn
+            // 
+            this.subnodedelBtn.Location = new System.Drawing.Point(7, 526);
+            this.subnodedelBtn.Name = "subnodedelBtn";
+            this.subnodedelBtn.Size = new System.Drawing.Size(96, 34);
+            this.subnodedelBtn.TabIndex = 17;
+            this.subnodedelBtn.Text = "Delete";
+            this.subnodedelBtn.UseVisualStyleBackColor = true;
+            this.subnodedelBtn.Click += new System.EventHandler(this.subnodedelBtn_Click);
+            // 
+            // bignodeaddBtn
+            // 
+            this.bignodeaddBtn.Location = new System.Drawing.Point(226, 468);
+            this.bignodeaddBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.bignodeaddBtn.Name = "bignodeaddBtn";
+            this.bignodeaddBtn.Size = new System.Drawing.Size(82, 34);
+            this.bignodeaddBtn.TabIndex = 16;
+            this.bignodeaddBtn.Text = "Add";
+            this.bignodeaddBtn.UseVisualStyleBackColor = true;
+            this.bignodeaddBtn.Click += new System.EventHandler(this.bignodeaddBtn_Click);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(109, 445);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(75, 18);
+            this.label18.TabIndex = 15;
+            this.label18.Text = "BigNode";
+            // 
+            // bignodeBox
+            // 
+            this.bignodeBox.Location = new System.Drawing.Point(109, 469);
+            this.bignodeBox.Name = "bignodeBox";
+            this.bignodeBox.Size = new System.Drawing.Size(110, 28);
+            this.bignodeBox.TabIndex = 14;
+            // 
+            // bignodedelBtn
+            // 
+            this.bignodedelBtn.Location = new System.Drawing.Point(7, 465);
+            this.bignodedelBtn.Name = "bignodedelBtn";
+            this.bignodedelBtn.Size = new System.Drawing.Size(96, 34);
+            this.bignodedelBtn.TabIndex = 13;
+            this.bignodedelBtn.Text = "Delete";
+            this.bignodedelBtn.UseVisualStyleBackColor = true;
+            this.bignodedelBtn.Click += new System.EventHandler(this.bignodedelBtn_Click);
+            // 
+            // bmldelBtn
+            // 
+            this.bmldelBtn.Location = new System.Drawing.Point(411, 468);
+            this.bmldelBtn.Name = "bmldelBtn";
+            this.bmldelBtn.Size = new System.Drawing.Size(96, 34);
+            this.bmldelBtn.TabIndex = 12;
+            this.bmldelBtn.Text = "Delete";
+            this.bmldelBtn.UseVisualStyleBackColor = true;
+            this.bmldelBtn.Click += new System.EventHandler(this.bmldelBtn_Click);
+            // 
+            // bmladdBtn
+            // 
+            this.bmladdBtn.Location = new System.Drawing.Point(1012, 469);
+            this.bmladdBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.bmladdBtn.Name = "bmladdBtn";
+            this.bmladdBtn.Size = new System.Drawing.Size(107, 34);
+            this.bmladdBtn.TabIndex = 11;
+            this.bmladdBtn.Text = "Add";
+            this.bmladdBtn.UseVisualStyleBackColor = true;
+            this.bmladdBtn.Click += new System.EventHandler(this.bmladdBtn_Click);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(647, 447);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(52, 18);
+            this.label19.TabIndex = 10;
+            this.label19.Text = "Value";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(513, 447);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(55, 18);
+            this.label17.TabIndex = 8;
+            this.label17.Text = "Name";
+            // 
+            // bmlvalueBox
+            // 
+            this.bmlvalueBox.Location = new System.Drawing.Point(650, 471);
+            this.bmlvalueBox.Name = "bmlvalueBox";
+            this.bmlvalueBox.Size = new System.Drawing.Size(355, 28);
+            this.bmlvalueBox.TabIndex = 7;
+            // 
+            // bmlnameBox
+            // 
+            this.bmlnameBox.Location = new System.Drawing.Point(513, 471);
+            this.bmlnameBox.Name = "bmlnameBox";
+            this.bmlnameBox.Size = new System.Drawing.Size(131, 28);
+            this.bmlnameBox.TabIndex = 6;
+            // 
             // Apply
             // 
-            this.Apply.Location = new System.Drawing.Point(1013, 489);
+            this.Apply.Location = new System.Drawing.Point(1012, 525);
             this.Apply.Margin = new System.Windows.Forms.Padding(4);
             this.Apply.Name = "Apply";
             this.Apply.Size = new System.Drawing.Size(107, 34);
@@ -465,7 +620,7 @@ namespace PINEditor
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(409, 492);
+            this.textBox1.Location = new System.Drawing.Point(411, 528);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(594, 28);
@@ -475,7 +630,7 @@ namespace PINEditor
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label15.Location = new System.Drawing.Point(319, 492);
+            this.label15.Location = new System.Drawing.Point(325, 524);
             this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(95, 32);
@@ -627,17 +782,17 @@ namespace PINEditor
             // columnHeader1
             // 
             this.columnHeader1.Text = "name";
-            this.columnHeader1.Width = 162;
+            this.columnHeader1.Width = 144;
             // 
             // IP
             // 
             this.IP.Text = "IP";
-            this.IP.Width = 187;
+            this.IP.Width = 104;
             // 
             // Port
             // 
             this.Port.Text = "Port";
-            this.Port.Width = 112;
+            this.Port.Width = 54;
             // 
             // PINEditor
             // 
@@ -646,6 +801,7 @@ namespace PINEditor
             this.ClientSize = new System.Drawing.Size(1143, 675);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Text = "PINEditor";
@@ -720,6 +876,20 @@ namespace PINEditor
         private System.Windows.Forms.TextBox nameBox;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button delBtn;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox bmlvalueBox;
+        private System.Windows.Forms.TextBox bmlnameBox;
+        private System.Windows.Forms.Button bmldelBtn;
+        private System.Windows.Forms.Button bmladdBtn;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Button subnodeaddBtn;
+        private System.Windows.Forms.TextBox subnodeBox;
+        private System.Windows.Forms.Button subnodedelBtn;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Button bignodeaddBtn;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox bignodeBox;
+        private System.Windows.Forms.Button bignodedelBtn;
     }
 }
 
