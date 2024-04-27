@@ -18,3 +18,4 @@ This Project is made to edit KartRider.pin file. I used Viual Studio 2019 and .N
 - v0.4 : Fixed Unk2 type
 - v0.5 : Added editing bml INFO
 - v0.6 : Added detaily editing IP and Port 
+- v0.7 : Added detaily editing bml INFO, erased DLL, fixed all errors 
