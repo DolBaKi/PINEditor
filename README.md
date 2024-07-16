@@ -6,7 +6,15 @@ This Project is made to edit KartRider.pin file. I used Viual Studio 2019 and .N
 This program does not support KartRider.pin, which was created before 2006.               
 2006년 이전에 만들어진 KartRider.pin파일은 지원하지 않습니다.
 
-## How to use
+## Screenshots
+#### 1. Primary Data
+<img src="/1.png" width="600" height="360">
+
+#### 2. Bml View
+<img src="/2.png" width="600" height="360">
+
+#### 3. IP Data
+<img src="/3.png" width="600" height="360">
 
 ## Functions
 
