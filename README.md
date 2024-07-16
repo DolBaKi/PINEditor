@@ -5,6 +5,9 @@ This Project is made to edit KartRider.pin file. I used Viual Studio 2019 and .N
 
 This program does not support KartRider.pin, which was created before 2006.               
 2006년 이전에 만들어진 KartRider.pin파일은 지원하지 않습니다.
+
+## How to use
+
 ## Functions
 
 - open KartRider.pin
